@@ -6,7 +6,6 @@ import com.car.center.model.Mecanico;
 
 public interface AsignacionMecanicoService {
 
-	
 	public List<Mecanico> obtenerMecanicosDisponiblesEnOrdenDePrioridad();
 	
 }

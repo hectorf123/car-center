@@ -40,9 +40,7 @@ public class MecanicoController{
 		meca = service.findAll();
 		for (Mecanico mecanico : meca) {
 			System.out.println(mecanico.getPrimerNombre());
-			System.out.println("entra for");
 		}
-		System.out.println("sale");
 		return ResponseEntity.ok().body(service.findAll());
 	
 	}
@@ -84,7 +82,6 @@ public class MecanicoController{
 		if (meca.isPresent()) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseCodes("403", "El Mecánico ya existe en el sistema"));
 		}
-		
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(mecanico));
 	}
 	
@@ -93,12 +90,8 @@ public class MecanicoController{
     public List<Mecanico> obtenerMecanicosDisponibles() {
         return asignacionMecanicoService.obtenerMecanicosDisponiblesEnOrdenDePrioridad();
     }
-	
-	
-	
 
 	// - Validación
-
 	protected ResponseEntity<?> validar(BindingResult result) {
 		Map<String, Object> errores = new HashMap<>();
 		result.getFieldErrors().forEach(err -> {
